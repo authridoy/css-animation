@@ -74,23 +74,20 @@
 }
 .road-animation .road img{
     position: absolute;
-    top: -70px;
+    top: -80px;
     left: 0;
     width: 200px;
     animation-name: Drive;
-    animation-duration: 4s;
+    animation-duration: 6s;
+    /* animation-delay: 1s; */
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 @keyframes Drive{
     from{
         transform: translateX(0);
     }
     to{
-        transform: translateX(1000px);
-    }
-    0%{
-        transform: translateX(0);
-    }
-    100%{
         transform: translateX(1000px);
     }
 }
