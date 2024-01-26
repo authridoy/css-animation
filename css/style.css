@@ -48,12 +48,44 @@
     background: rgb(148, 20, 42);
     transform: rotate(360deg);
 }
-
+.road-animation{
+    overflow: hidden;
+}
 .road-animation .sky{
+    position: relative;
     width: 100%;
-    height: 220px;
+    height: 420px;
     background: skyblue;
 }
+.cloud{
+    position: absolute;
+}
+.cloud:nth-child(1){
+    top: 0;
+    right: -500px;
+    width: 500px;
+    animation: goingcloud 12s linear infinite;
+    animation-delay: 1s;
+}
+.cloud:nth-child(2){
+    top: 100px;
+    right: -500px;
+    width: 500px;
+    animation: goingcloud 15s linear infinite;
+    animation-delay: 0s;
+}
+@keyframes goingcloud{
+    from{
+        right: -500px;
+    }
+    to{
+        right: 2000px;
+    }
+}
+
+
+
+
 .road-animation .fild{
     width: 100%;
     height: 220px;
@@ -72,22 +104,140 @@
     border-bottom: 3px dashed #fff;
     border-spacing: 5px;
 }
-.road-animation .road img{
+.road-animation .road .motorcycle1{
     position: absolute;
     top: -80px;
     left: 0;
-    width: 200px;
+    width: 170px;
+    animation: Drive 3s both infinite linear,
+                jump 0.3s 1.2s ease;
+    /* animation-name: ;
+    animation-duration: ;
+    animation-fill-mode: ;
+    animation-iteration-count: ; */
+    animation-timing-function: cubic-bezier(0,.92,1,.2);
+}
+.road-animation .road .motorcycle2{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 170px;
     animation-name: Drive;
-    animation-duration: 6s;
-    /* animation-delay: 1s; */
-    animation-fill-mode: forwards;
+    animation-duration: 5s;
+    animation-fill-mode: both;
     animation-iteration-count: infinite;
 }
 @keyframes Drive{
     from{
-        transform: translateX(0);
+        transform: translateX(-200px);
     }
     to{
-        transform: translateX(1000px);
+        transform: translateX(2000px);
+    }
+}
+@keyframes jump{
+    0%{
+        top: -80px;
+    }
+    50%{
+        top: -150px;
+    }
+    100%{
+        top: -80px;
+    }
+}
+
+
+
+
+
+.popup-box{
+    width: 100%;
+    height: 100vh;
+}
+.pop-up{
+    width: 400px;
+    margin-top: 100px;
+    margin-left: -450px;
+    padding: 20px;
+    transform-origin: 10px 10px;
+    background: #a59d9d;
+    animation: pupupshow 2s ease forwards;
+}
+@keyframes pupupshow{
+    0%{
+        transform: translateX(-450px) rotate(0);
+    }
+    50%{
+        transform: translateX(1250px) rotate(0);
+    }
+    /* 70%{
+        transform: translateX(1250px) rotate(45deg);
+    } */
+    100%{
+        transform: translateX(1100px) rotate(70deg);
+    }
+}
+
+
+.rotet-card-bg{
+    background: #b3afaf;
+}
+.rotet-card-bg ul li{
+    position: relative;
+    list-style: none;
+    font-size: 24px;
+    color: #1d1b1b;
+    width: 25%;
+    display: inline-block;
+    overflow: hidden;
+}
+.rotet-card-bg ul li .show-card {
+    width: 99%;
+    height: 200px;
+    margin: 5px;
+    color: #2c1414;
+    background: #8c86a7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 2;
+}
+.rotet-card-bg ul li .reverse-card {
+    position: absolute;
+    top: 0;
+    width: 99%;
+    height: 200px;
+    margin: 5px;
+    color: #07a336;
+    background: rgb(255, 187, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+.rotet-card-bg ul li:hover .show-card{
+    animation: Rfood 0.6s ease-in forwards;
+}
+.rotet-card-bg ul li:hover .reverse-card{
+    animation: Rorder 0.3s ease-in forwards;
+}
+
+
+@keyframes Rfood{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(360deg);
+    }
+}
+@keyframes Rorder{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateX(90deg);
     }
 }
